@@ -11,11 +11,24 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
-#      - name: Build an image from Dockerfile
-#        run: |
-#          docker build -t docker.io/my-organization/my-app:${{ github.sha }} .
-      
+        
       - name: Aqua Security Trivy
         uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: ruby:2.4.0
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: ruby:2.4.0
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
 
