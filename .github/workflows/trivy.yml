@@ -5,8 +5,8 @@ on:
       - main
   pull_request:
 jobs:
-  scan:
-    name: Container Scan
+  scans:
+    name: Mongodb
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -31,4 +31,29 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
-
+    
+    name: MariaDb
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: mariadb:10.6.1
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: mariadb:10.6.1
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
