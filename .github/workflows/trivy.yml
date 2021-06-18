@@ -3,7 +3,7 @@ on:
   push:
   pull_request:
 jobs:
-  scans:
+  mongodb:
     name: Mongodb
     runs-on: ubuntu-latest
     steps:
@@ -29,7 +29,7 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
-    
+  mariadb:
     name: MariaDb
     runs-on: ubuntu-latest
     steps:
