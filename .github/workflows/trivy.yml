@@ -419,8 +419,8 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
-  hello-world:
-    name: hello-world
+  ruby:
+    name: ruby
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -430,7 +430,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.18
         with:
           # image reference
-          image-ref: hello-world:nanoserver-1809
+          image-ref: ruby:2.6.7-alpine3.12
           # exit code when vulnerabilities were found
           exit-code: 0
           # severities of vulnerabilities to be displayed
@@ -440,7 +440,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.7
         with:
           # image reference
-          image-ref: hello-world:nanoserver-1809
+          image-ref: ruby:2.6.7-alpine3.12
           # exit code when vulnerabilities were found
           exit-code: 1
           # severities of vulnerabilities to be displayed
