@@ -3,6 +3,162 @@ on:
   push:
   pull_request:
 jobs:
+  ubuntu:
+    name: ubuntu
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: ubuntu:21.10
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: ubuntu:21.10
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  alpine:
+    name: alpine
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: alpine:23.14.0
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: alpine:23.14.0
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  busybox:
+    name: busybox
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: busybox:1.33.1
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: busybox:1.33.1
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  postgres:
+    name: postgres
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: postgres:9.6.22
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: postgres:9.6.22
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  redis:
+    name: redis
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: redis:6.2.4-alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: redis:6.2.4-alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  traefik:
+    name: traefik
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: traefik:v2.4.8
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: traefik:v2.4.8
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
   mongodb:
     name: Mongodb
     runs-on: ubuntu-latest
@@ -29,6 +185,84 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
+  nodeJS:
+    name: NodeJS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: node:lts-alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: node:lts-alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  mysql:
+    name: mysql
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: mysql:8.0.25
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: mysql:8.0.25
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  python:
+    name: python
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: python:alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: python:alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
   mariadb:
     name: MariaDb
     runs-on: ubuntu-latest
@@ -51,6 +285,370 @@ jobs:
         with:
           # image reference
           image-ref: mariadb:10.6.1
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  nginx:
+    name: nginx
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: nginx:1.21.0-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: nginx:1.21.0-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  docker:
+    name: docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: docker:20.10.7
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: docker:20.10.7
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  rabbitmq:
+    name: rabbitmq
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: rabbitmq:3.8.17
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: rabbitmq:3.8.17
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  openjdk:
+    name: openjdk
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: openjdk:jdk-oraclelinux7
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: openjdk:jdk-oraclelinux7
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  golang:
+    name: golang
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: golang:alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: golang:alpine3.13
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  helloworld:
+    name: helloworld
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: hello-world:nanoserver-1803
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: hello-world:nanoserver-1803
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  httpd:
+    name: httpd
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: httpd:2.4.48-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: httpd:2.4.48-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  registry:
+    name: registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: registry:2.7.1
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: registry:2.7.1
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  memchached:
+    name: memchached
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: memcached:1.6.9
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: memcached:1.6.9
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  centOS:
+    name: centOS
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: centos:centos8.3.2011
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: centos:centos8.3.2011
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  consul:
+    name: consul
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: consul:1.9.6
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: consul:1.9.6
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  influxdb:
+    name: influxdb
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: influxdb:2.0.7-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: influxdb:2.0.7-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  debian:
+    name: debian
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: debian:stable-20210511
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: debian:stable-20210511
+          # exit code when vulnerabilities were found
+          exit-code: 1
+          # severities of vulnerabilities to be displayed
+          severity: HIGH,CRITICAL
+  wordpress:
+    name: wordpress
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+        
+      - name: Aqua Security Trivy
+        uses: aquasecurity/trivy-action@0.0.18
+        with:
+          # image reference
+          image-ref: wordpress:php8.0-fpm-alpine
+          # exit code when vulnerabilities were found
+          exit-code: 0
+          # severities of vulnerabilities to be displayed
+          severity: UNKNOWN,LOW,MEDIUM
+        
+      - name: Trivy Scan - High and Critical Severity
+        uses: aquasecurity/trivy-action@0.0.7
+        with:
+          # image reference
+          image-ref: wordpress:php8.0-fpm-alpine
           # exit code when vulnerabilities were found
           exit-code: 1
           # severities of vulnerabilities to be displayed
