@@ -40,7 +40,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.18
         with:
           # image reference
-          image-ref: alpine:23.14.0
+          image-ref: alpine:3.14.0
           # exit code when vulnerabilities were found
           exit-code: 0
           # severities of vulnerabilities to be displayed
@@ -50,7 +50,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.7
         with:
           # image reference
-          image-ref: alpine:23.14.0
+          image-ref: alpine:3.14.0
           # exit code when vulnerabilities were found
           exit-code: 1
           # severities of vulnerabilities to be displayed
@@ -419,8 +419,8 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
-  helloworld:
-    name: helloworld
+  hello-world:
+    name: hello-world
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -430,7 +430,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.18
         with:
           # image reference
-          image-ref: hello-world:nanoserver-1803
+          image-ref: hello-world:nanoserver-1809
           # exit code when vulnerabilities were found
           exit-code: 0
           # severities of vulnerabilities to be displayed
@@ -440,7 +440,7 @@ jobs:
         uses: aquasecurity/trivy-action@0.0.7
         with:
           # image reference
-          image-ref: hello-world:nanoserver-1803
+          image-ref: hello-world:nanoserver-1809
           # exit code when vulnerabilities were found
           exit-code: 1
           # severities of vulnerabilities to be displayed
