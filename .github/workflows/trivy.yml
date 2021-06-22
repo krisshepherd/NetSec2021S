@@ -654,3 +654,4 @@ jobs:
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
           
+          
