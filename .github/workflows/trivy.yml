@@ -653,3 +653,4 @@ jobs:
           exit-code: 1
           # severities of vulnerabilities to be displayed
           severity: HIGH,CRITICAL
+          
